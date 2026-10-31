@@ -1,0 +1,23 @@
+[
+  {"question":"How many times can I retry a failed payment request?","filename":"payments.md","evidence":"at most three times","unanswerable":false},
+  {"question":"What delays should I use between payment retries?","filename":"payments.md","evidence":"1, 2, and 4 seconds","unanswerable":false},
+  {"question":"Which HTTP errors allow payment retries?","filename":"payments.md","evidence":"HTTP 429 and HTTP 503","unanswerable":false},
+  {"question":"What should I do with the idempotency key when retrying a payment?","filename":"payments.md","evidence":"Reuse the same key","unanswerable":false},
+  {"question":"When do idempotency keys expire?","filename":"payments.md","evidence":"24 hours","unanswerable":false},
+  {"question":"How long is the payment request timeout?","filename":"payments.md","evidence":"10 seconds","unanswerable":false},
+  {"question":"Does a payment timeout mean the payment failed?","filename":"payments.md","evidence":"does not prove the payment failed","unanswerable":false},
+  {"question":"How do I authenticate API requests?","filename":"authentication.md","evidence":"Authorization header","unanswerable":false},
+  {"question":"How often should API tokens be rotated?","filename":"authentication.md","evidence":"every 90 days","unanswerable":false},
+  {"question":"Can sandbox tokens access production payments?","filename":"authentication.md","evidence":"cannot access production payments","unanswerable":false},
+  {"question":"How many active API tokens does the dashboard support?","filename":"authentication.md","evidence":"two active tokens","unanswerable":false},
+  {"question":"What response acknowledges a webhook and how quickly?","filename":"webhooks.md","evidence":"HTTP 200 within five seconds","unanswerable":false},
+  {"question":"How often are failed webhook deliveries retried?","filename":"webhooks.md","evidence":"eight times over 24 hours","unanswerable":false},
+  {"question":"What should I use to verify webhook signatures?","filename":"webhooks.md","evidence":"raw request body","unanswerable":false},
+  {"question":"What database engine does ExamplePay use internally?","unanswerable":true},
+  {"question":"What is the monthly price of ExamplePay?","unanswerable":true},
+  {"question":"How do I delete an ExamplePay account?","unanswerable":true},
+  {"question":"What OAuth refresh token endpoint should I call?","unanswerable":true},
+  {"question":"What is the maximum payment amount in euros?","unanswerable":true},
+  {"question":"What is the webhook signing secret value for my account?","unanswerable":true}
+]
+

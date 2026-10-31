@@ -1,0 +1,1033 @@
+{
+  "created_at": "2026-10-31T19:51:04.345885+00:00",
+  "environment": {
+    "status": "ok",
+    "mode": "demo",
+    "storage": "sqlite-exact-search",
+    "configuration": {
+      "embedding": "demo-hash-v1:256",
+      "generation_model": null,
+      "chunk_words": 120,
+      "overlap": 20,
+      "min_score": 0.25
+    }
+  },
+  "top_k": 4,
+  "cases": 20,
+  "retrieval_hit_rate_at_k": 1.0,
+  "unanswerable_abstention_rate": 0.5,
+  "answerable_response_rate": 0.8571428571428571,
+  "median_latency_ms": 1.36,
+  "grounding": "Not automatically scored. Review answers against evidence manually.",
+  "cost": "Not calculated. generation_usage excludes embedding tokens; consult provider usage.",
+  "rows": [
+    {
+      "case": {
+        "question": "How many times can I retry a failed payment request?",
+        "filename": "payments.md",
+        "evidence": "at most three times",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.5289543894458101
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.1980295085953349
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.03112864031823452
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 4.21,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What delays should I use between payment retries?",
+        "filename": "payments.md",
+        "evidence": "1, 2, and 4 seconds",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.3541025289888078
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.10846522890932811
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.06819943394704736
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.92,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "Which HTTP errors allow payment retries?",
+        "filename": "payments.md",
+        "evidence": "HTTP 429 and HTTP 503",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.4506759459857554
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.2530855341217656
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.06819943394704736
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.47,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What should I do with the idempotency key when retrying a payment?",
+        "filename": "payments.md",
+        "evidence": "Reuse the same key",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.547249362982703
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.18077538151554687
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.3,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "When do idempotency keys expire?",
+        "filename": "payments.md",
+        "evidence": "24 hours",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.26447719472290504
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.06600983619844497
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.62,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "How long is the payment request timeout?",
+        "filename": "payments.md",
+        "evidence": "10 seconds",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.4678802379866515
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.16169041669088866
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 2.21,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "Does a payment timeout mean the payment failed?",
+        "filename": "payments.md",
+        "evidence": "does not prove the payment failed",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.5713360398804904
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.21389631597324935
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.68,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "How do I authenticate API requests?",
+        "filename": "authentication.md",
+        "evidence": "Authorization header",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "quote": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.3081578172139684
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.140028008402801
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.08311716349233828
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.33,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "How often should API tokens be rotated?",
+        "filename": "authentication.md",
+        "evidence": "every 90 days",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "quote": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.4193710684146628
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.3233808333817773
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.66,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "Can sandbox tokens access production payments?",
+        "filename": "authentication.md",
+        "evidence": "cannot access production payments",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "quote": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.47739603762933147
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.09657341699694759
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.03615507630310937
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.36,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "How many active API tokens does the dashboard support?",
+        "filename": "authentication.md",
+        "evidence": "two active tokens",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "quote": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.4669296047735178
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.09901475429766746
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.8,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What response acknowledges a webhook and how quickly?",
+        "filename": "webhooks.md",
+        "evidence": "HTTP 200 within five seconds",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": false,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "The documents do not contain enough evidence to answer this question.",
+        "abstained": true,
+        "sources": [],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.16169041669088866
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.03599078753743473
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.35,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "How often are failed webhook deliveries retried?",
+        "filename": "webhooks.md",
+        "evidence": "eight times over 24 hours",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "quote": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.2530855341217656
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.12876455599593012
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.03409971697352368
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.22,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What should I use to verify webhook signatures?",
+        "filename": "webhooks.md",
+        "evidence": "raw request body",
+        "unanswerable": false
+      },
+      "retrieval_hit": true,
+      "abstention_correct": false,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "The documents do not contain enough evidence to answer this question.",
+        "abstained": true,
+        "sources": [],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.20211302086361083
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.07198157507486946
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.038124642583151166
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.15,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What database engine does ExamplePay use internally?",
+        "unanswerable": true
+      },
+      "retrieval_hit": null,
+      "abstention_correct": false,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "quote": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.2530855341217656
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.09657341699694759
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.06819943394704736
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.75,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What is the monthly price of ExamplePay?",
+        "unanswerable": true
+      },
+      "retrieval_hit": null,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "The documents do not contain enough evidence to answer this question.",
+        "abstained": true,
+        "sources": [],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.14002800840280102
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.08311716349233828
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0440225453162812
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.17,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "How do I delete an ExamplePay account?",
+        "unanswerable": true
+      },
+      "retrieval_hit": null,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "The documents do not contain enough evidence to answer this question.",
+        "abstained": true,
+        "sources": [],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.1867040112037347
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0440225453162812
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.04155858174616914
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.36,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What OAuth refresh token endpoint should I call?",
+        "unanswerable": true
+      },
+      "retrieval_hit": null,
+      "abstention_correct": true,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "The documents do not contain enough evidence to answer this question.",
+        "abstained": true,
+        "sources": [],
+        "retrieved_passages": [
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.13639886789409472
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.09657341699694759
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.07231015260621874
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.3,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What is the maximum payment amount in euros?",
+        "unanswerable": true
+      },
+      "retrieval_hit": null,
+      "abstention_correct": false,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "quote": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.28792630029947786
+          },
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.1212678125181665
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.0
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.18,
+        "generation_usage": {}
+      }
+    },
+    {
+      "case": {
+        "question": "What is the webhook signing secret value for my account?",
+        "unanswerable": true
+      },
+      "retrieval_hit": null,
+      "abstention_correct": false,
+      "human_grounding_review": "pending",
+      "result": {
+        "answer": "Demo evidence excerpt: # ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+        "abstained": false,
+        "sources": [
+          {
+            "passage_id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "quote": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters."
+          }
+        ],
+        "retrieved_passages": [
+          {
+            "id": "527f6bd8-d132-4d2c-b5e3-67561c00e526",
+            "document_id": "acdf3daf-fa8a-4ac6-810f-e5c59cfe45a7",
+            "filename": "webhooks.md",
+            "page": null,
+            "text": "# ExamplePay webhooks (fictional) ## Delivery Webhook delivery uses HTTPS POST requests. Return HTTP 200 within five seconds to acknowledge delivery. Failed webhook deliveries are retried up to eight times over 24 hours. ## Verification Verify the X-ExamplePay-Signature header using the webhook signing secret and the raw request body. Reject timestamps older than five minutes to reduce replay attacks. The signing secret differs from your API token. ## Deduplication Each webhook has an event_id. Store processed event identifiers and ignore duplicate events. Delivery order is not guaranteed; fetch the current payment state when event order matters.",
+            "score": 0.33004918099222486
+          },
+          {
+            "id": "7a46bf1b-f61b-483b-91fb-feb3dd13daaf",
+            "document_id": "6f4242a6-9d88-4ae3-a648-4180d6e24e9c",
+            "filename": "payments.md",
+            "page": null,
+            "text": "# ExamplePay integration handbook (fictional) ## Retries Retry failed payment requests at most three times. Use exponential backoff with delays of 1, 2, and 4 seconds. Retry only HTTP 429 and HTTP 503. Never retry HTTP 400 or HTTP 401 without correcting the request. ## Idempotency Send an Idempotency-Key header on every payment creation request. Reuse the same key when retrying the same payment. Keys expire after 24 hours. A new key can create a second payment. ## Timeouts The payment request timeout is 10 seconds. A timeout does not prove the payment failed. Check the payment status before attempting another payment.",
+            "score": 0.26447719472290504
+          },
+          {
+            "id": "a767acb7-28d1-4b7c-9847-efc93ff1f517",
+            "document_id": "f0b58539-a661-4926-8ea2-032f5f680e84",
+            "filename": "authentication.md",
+            "page": null,
+            "text": "# ExamplePay authentication (fictional) ## Requests Authenticate API requests with an Authorization header containing Bearer followed by your API token. Create tokens in the developer dashboard. Keep tokens on the server and never include them in browser code. ## Rotation Rotate API tokens every 90 days. Revoke a compromised token immediately. A revoked token returns HTTP 401 on subsequent requests. The dashboard supports two active tokens so you can rotate without downtime. ## Environments Sandbox tokens start with test_. Production tokens start with live_. Sandbox tokens cannot access production payments. Store tokens in environment variables or a secret manager.",
+            "score": 0.03112864031823452
+          }
+        ],
+        "mode": "demo",
+        "latency_ms": 1.18,
+        "generation_usage": {}
+      }
+    }
+  ]
+}
